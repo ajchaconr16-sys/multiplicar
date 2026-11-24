@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MultiFácil - Aprende las tablas de multiplicar jugando</title>
+  
+  <!-- Fuente Comfortaa desde Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos principales -->
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <!-- 1. Cabecera -->
+  <header class="cabecera" id="cabecera">
+    <div class="contenedor contenedor-cabecera">
+      <a href="#portada" class="logo-enlace" aria-label="MultiFácil Inicio">
+        <img src="001.png" alt="MultiFácil" class="logo-imagen">
+      </a>
+
+      <!-- Botón de menú para celular -->
+      <button class="menu-hamburguesa" id="btn-menu" aria-label="Abrir menú de navegación" aria-expanded="false">
+        <span class="icono-hamburguesa">☰</span>
+      </button>
+
+      <!-- Menú de navegación -->
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-lista">
+          <li><a href="#como-funciona" class="nav-enlace">Cómo funciona</a></li>
+          <li><a href="#actividades" class="nav-enlace">Actividades</a></li>
+          <li><a href="#papas-y-maestros" class="nav-enlace">Para papás y maestros</a></li>
+          <li><a href="#preguntas" class="nav-enlace">Preguntas</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- 2. Portada (Hero) -->
+    <section class="seccion-portada" id="portada">
+      <div class="contenedor contenido-portada">
+        <div class="portada-texto">
+          <span class="insignia-portada">✨ ¡Aprender es divertido!</span>
+          <h1 class="portada-titulo">Aprende las tablas de multiplicar jugando</h1>
+          <p class="portada-frase">Descubre una forma divertida, fácil y llena de colores para dominar las matemáticas a tu propio ritmo.</p>
+          <div class="portada-acciones">
+            <a href="#actividades" class="btn btn-principal btn-grande">Jugar ahora 🚀</a>
+          </div>
+        </div>
+        <div class="portada-ilustracion">
+          <div class="tarjeta-hero-escaparate">
+            <div class="hero-escaparate-encabezado">
+              <span class="escaparate-insignia">🎯 MultiFácil</span>
+              <span class="escaparate-puntos">⭐ 100 pts</span>
+            </div>
+
+            <div class="hero-operacion-caja">
+              <span class="hero-op-texto">3 × 4 =</span>
+              <span class="hero-op-resultado">12</span>
+              <span class="hero-op-acierto">✨ ¡Correcto!</span>
+            </div>
+
+            <div class="hero-pastillas-lista">
+              <div class="pastilla-mini pastilla-amarilla">
+                <span class="pastilla-icono">⭐</span>
+                <span class="pastilla-texto">2 × 2 = 4</span>
+              </div>
+              <div class="pastilla-mini pastilla-azul">
+                <span class="pastilla-icono">🎨</span>
+                <span class="pastilla-texto">5 × 5 = 25</span>
+              </div>
+              <div class="pastilla-mini pastilla-verde">
+                <span class="pastilla-icono">💡</span>
+                <span class="pastilla-texto">6 × 3 = 18</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Cómo funciona -->
+    <section class="seccion seccion-como-funciona" id="como-funciona">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="seccion-etiqueta">Paso a paso</span>
+          <h2 class="seccion-titulo">Aprender a multiplicar es como jugar.</h2>
+        </div>
+
+        <div class="pasos-cuadricula">
+          <!-- Paso 1 -->
+          <div class="tarjeta-paso">
+            <div class="paso-numero">1</div>
+            <div class="paso-icono">🎯</div>
+            <h3 class="paso-titulo">Elige una tabla.</h3>
+            <p class="paso-descripcion">Escoge la tabla que quieres practicar, del 2 al 9. Puedes empezar por la más fácil.</p>
+          </div>
+
+          <!-- Paso 2 -->
+          <div class="tarjeta-paso">
+            <div class="paso-numero">2</div>
+            <div class="paso-icono">✏️</div>
+            <h3 class="paso-titulo">Resuelve y escribe.</h3>
+            <p class="paso-descripcion">Cada parte del dibujo trae una multiplicación. Piensa la respuesta y escríbela tú mismo.</p>
+          </div>
+
+          <!-- Paso 3 -->
+          <div class="tarjeta-paso">
+            <div class="paso-numero">3</div>
+            <div class="paso-icono">🎨</div>
+            <h3 class="paso-titulo">Descubre el dibujo.</h3>
+            <p class="paso-descripcion">Si tu respuesta es correcta, esa parte se llena de color. Si te equivocas, no pasa nada: te damos una pista con dibujos para que lo intentes otra vez.</p>
+          </div>
+        </div>
+
+        <!-- ¿Por qué funciona? -->
+        <div class="caja-por-que-funciona">
+          <div class="icono-por-que">💡</div>
+          <div class="texto-por-que">
+            <h3 class="por-que-titulo">¿Por qué funciona?</h3>
+            <p class="por-que-parrafo">Cuando el niño escribe la respuesta en lugar de solo elegirla, tiene que recordarla por sí mismo, y eso ayuda a que se le quede. El color aparece al instante, así que sabe enseguida si acertó. Y como el dibujo se va completando, cada acierto se siente como un pequeño premio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Actividades -->
+    <section class="seccion seccion-actividades" id="actividades">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="seccion-etiqueta">Zona de juegos</span>
+          <h2 class="seccion-titulo">Actividades</h2>
+        </div>
+
+        <div class="cuadricula-actividades">
+          <!-- Tarjeta 1: Dibujo mágico -->
+          <div class="tarjeta-actividad tarjeta-destacada">
+            <div class="actividad-icono-caja">
+              <span class="actividad-icono">🎨</span>
+            </div>
+            <h3 class="actividad-nombre">Dibujo mágico</h3>
+            <p class="actividad-frase">Escribe los resultados y colorea el dibujo.</p>
+            <button type="button" class="btn btn-principal btn-actividad" id="btn-dibujo-magico">Jugar</button>
+          </div>
+
+          <!-- Tarjeta 2: Carrera de 60 segundos -->
+          <div class="tarjeta-actividad tarjeta-destacada">
+            <span class="etiqueta-proximamente etiqueta-jugable">¡A Jugar!</span>
+            <div class="actividad-icono-caja">
+              <span class="actividad-icono">⚡</span>
+            </div>
+            <h3 class="actividad-nombre">Carrera de 60 segundos</h3>
+            <p class="actividad-frase">Responde todas las que puedas.</p>
+            <button type="button" class="btn btn-principal btn-actividad" id="btn-carrera-jugar">Jugar</button>
+          </div>
+
+          <!-- Tarjeta 3: Memoria de parejas -->
+          <div class="tarjeta-actividad tarjeta-proxima">
+            <span class="etiqueta-proximamente">Próximamente</span>
+            <div class="actividad-icono-caja">
+              <span class="actividad-icono">🃏</span>
+            </div>
+            <h3 class="actividad-nombre">Memoria de parejas</h3>
+            <p class="actividad-frase">Une cada multiplicación con su resultado.</p>
+            <button type="button" class="btn btn-inactivo btn-actividad" disabled>Próximamente</button>
+          </div>
+
+          <!-- Tarjeta 4: Completa la tabla -->
+          <div class="tarjeta-actividad tarjeta-proxima">
+            <span class="etiqueta-proximamente">Próximamente</span>
+            <div class="actividad-icono-caja">
+              <span class="actividad-icono">🧩</span>
+            </div>
+            <h3 class="actividad-nombre">Completa la tabla</h3>
+            <p class="actividad-frase">Llena los huecos de la tabla.</p>
+            <button type="button" class="btn btn-inactivo btn-actividad" disabled>Próximamente</button>
+          </div>
+        </div>
+
+        <!-- ==============================================
+             ZONA INTERACTIVA DE JUEGOS
+             ============================================== -->
+        <div class="zona-juego-interactiva" id="zona-juego">
+          <!-- Pestañas para alternar entre juegos -->
+          <div class="juegos-pestanas">
+            <button type="button" class="btn-pestana activa" id="tab-dibujo-magico">
+              <span class="pestana-icono">🎨</span> Dibujo Mágico
+            </button>
+            <button type="button" class="btn-pestana" id="tab-carrera-60">
+              <span class="pestana-icono">⚡</span> Carrera de 60s
+            </button>
+          </div>
+
+          <!-- JUEGO 1: DIBUJO MÁGICO -->
+          <div class="vista-juego" id="vista-dibujo-magico">
+            <div class="juego-panel-superior">
+              <div class="juego-instrucciones-caja">
+                <h3 class="juego-subtitulo">🎨 Colorea el Cohete Mágico</h3>
+                <p class="juego-texto-guia">Elige una tabla, escribe el resultado de cada parte del dibujo y ¡mira cómo se llena de color!</p>
+              </div>
+
+              <div class="selector-tablas-caja">
+                <span class="selector-titulo">👉 Elige la tabla a practicar:</span>
+                <div class="lista-botones-tablas" id="selector-tablas">
+                  <button type="button" class="btn-tabla" data-tabla="2">Tabla del 2</button>
+                  <button type="button" class="btn-tabla activa" data-tabla="3">Tabla del 3</button>
+                  <button type="button" class="btn-tabla" data-tabla="4">Tabla del 4</button>
+                  <button type="button" class="btn-tabla" data-tabla="5">Tabla del 5</button>
+                  <button type="button" class="btn-tabla" data-tabla="6">Tabla del 6</button>
+                  <button type="button" class="btn-tabla" data-tabla="7">Tabla del 7</button>
+                  <button type="button" class="btn-tabla" data-tabla="8">Tabla del 8</button>
+                  <button type="button" class="btn-tabla" data-tabla="9">Tabla del 9</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tablero de Dibujo Mágico -->
+            <div class="dibujo-tablero-grid">
+              
+              <!-- Columna 1: El Lienzo con el dibujo interactivo SVG -->
+              <div class="lienzo-columna">
+                <div class="lienzo-estado-barra">
+                  <span class="lienzo-titulo-dibujo">🚀 Cohete Espacial</span>
+                  <span class="lienzo-progreso-contador" id="contador-progreso">0 de 8 partes coloreadas</span>
+                </div>
+
+                <div class="lienzo-svg-envoltorio" id="contenedor-svg">
+                  <svg id="svg-dibujo" viewBox="0 0 460 480" xmlns="http://www.w3.org/2000/svg" class="svg-dibujo-magico" aria-label="Dibujo mágico para colorear multiplicando">
+                    <rect width="460" height="480" rx="20" fill="#F8FAFC" />
+                    
+                    <!-- Estrellas de fondo decorativas -->
+                    <circle cx="80" cy="220" r="3" fill="#CBD5E1" />
+                    <circle cx="380" cy="140" r="4" fill="#CBD5E1" />
+                    <circle cx="370" cy="380" r="3" fill="#CBD5E1" />
+                    <circle cx="90" cy="390" r="4" fill="#CBD5E1" />
+
+                    <!-- PARTE 7: Estrella mágica -->
+                    <g class="grupo-parte" data-indice="7" id="parte-g-7">
+                      <polygon id="svg-parte-7" class="svg-segmento" points="80,50 88,72 110,72 92,86 98,108 80,94 62,108 68,86 50,72 72,72" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" />
+                      <text id="svg-texto-7" class="svg-etiqueta-op" x="80" y="87" text-anchor="middle" dominant-baseline="middle">3×9</text>
+                    </g>
+
+                    <!-- PARTE 6: Fuego / Llama propulsora -->
+                    <g class="grupo-parte" data-indice="6" id="parte-g-6">
+                      <path id="svg-parte-6" class="svg-segmento" d="M195 320 Q230 420 230 420 Q230 420 265 320 Z" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" />
+                      <text id="svg-texto-6" class="svg-etiqueta-op" x="230" y="360" text-anchor="middle" dominant-baseline="middle">3×8</text>
+                    </g>
+
+                    <!-- PARTE 4: Ala Izquierda -->
+                    <g class="grupo-parte" data-indice="4" id="parte-g-4">
+                      <path id="svg-parte-4" class="svg-segmento" d="M185 220 L115 310 L185 300 Z" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" stroke-linejoin="round" />
+                      <text id="svg-texto-4" class="svg-etiqueta-op" x="160" y="275" text-anchor="middle" dominant-baseline="middle">3×6</text>
+                    </g>
+
+                    <!-- PARTE 5: Ala Derecha -->
+                    <g class="grupo-parte" data-indice="5" id="parte-g-5">
+                      <path id="svg-parte-5" class="svg-segmento" d="M275 220 L345 310 L275 300 Z" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" stroke-linejoin="round" />
+                      <text id="svg-texto-5" class="svg-etiqueta-op" x="300" y="275" text-anchor="middle" dominant-baseline="middle">3×7</text>
+                    </g>
+
+                    <!-- PARTE 3: Cuerpo Inferior -->
+                    <g class="grupo-parte" data-indice="3" id="parte-g-3">
+                      <rect id="svg-parte-3" class="svg-segmento" x="185" y="220" width="90" height="90" rx="10" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" />
+                      <text id="svg-texto-3" class="svg-etiqueta-op" x="230" y="265" text-anchor="middle" dominant-baseline="middle">3×5</text>
+                    </g>
+
+                    <!-- PARTE 1: Cuerpo Superior -->
+                    <g class="grupo-parte" data-indice="1" id="parte-g-1">
+                      <rect id="svg-parte-1" class="svg-segmento" x="185" y="130" width="90" height="90" rx="10" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" />
+                      <text id="svg-texto-1" class="svg-etiqueta-op" x="230" y="148" text-anchor="middle" dominant-baseline="middle">3×3</text>
+                    </g>
+
+                    <!-- PARTE 2: Ventana circular -->
+                    <g class="grupo-parte" data-indice="2" id="parte-g-2">
+                      <circle id="svg-parte-2" class="svg-segmento" cx="230" cy="185" r="25" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" />
+                      <text id="svg-texto-2" class="svg-etiqueta-op" x="230" y="186" text-anchor="middle" dominant-baseline="middle">3×4</text>
+                    </g>
+
+                    <!-- PARTE 0: Punta del cohete -->
+                    <g class="grupo-parte" data-indice="0" id="parte-g-0">
+                      <path id="svg-parte-0" class="svg-segmento" d="M230 40 Q230 40 275 130 L185 130 Z" stroke="#1E293B" stroke-width="3" fill="#FFFFFF" stroke-linejoin="round" />
+                      <text id="svg-texto-0" class="svg-etiqueta-op" x="230" y="98" text-anchor="middle" dominant-baseline="middle">3×2</text>
+                    </g>
+                  </svg>
+                </div>
+
+                <!-- Barra de progreso visual -->
+                <div class="barra-progreso-caja">
+                  <div class="barra-progreso-riel">
+                    <div class="barra-progreso-llenado" id="barra-progreso" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Columna 2: Interacción para resolver -->
+              <div class="panel-resolucion-columna">
+                <div class="tarjeta-pregunta-activa">
+                  <div class="etiqueta-parte-actual" id="etiqueta-parte-actual">
+                    🎯 Resolviendo: <strong>Punta del cohete</strong>
+                  </div>
+
+                  <div class="pantalla-operacion-grande">
+                    <span class="signo-pregunta" id="pregunta-actual-texto">3 × 2 = ?</span>
+                  </div>
+
+                  <!-- Campo de entrada -->
+                  <div class="caja-formulario-respuesta">
+                    <input type="number" id="input-resultado" class="input-resultado-gigante" placeholder="Tu respuesta" autocomplete="off" inputmode="numeric">
+                    <button type="button" id="btn-comprobar-respuesta" class="btn btn-principal btn-grande-juego">¡Comprobar! ✨</button>
+                  </div>
+
+                  <!-- Teclado táctil gigante para niños -->
+                  <div class="teclado-tactil-ninos" aria-label="Teclado numérico en pantalla">
+                    <div class="fila-teclas">
+                      <button type="button" class="tecla-num" data-num="1">1</button>
+                      <button type="button" class="tecla-num" data-num="2">2</button>
+                      <button type="button" class="tecla-num" data-num="3">3</button>
+                    </div>
+                    <div class="fila-teclas">
+                      <button type="button" class="tecla-num" data-num="4">4</button>
+                      <button type="button" class="tecla-num" data-num="5">5</button>
+                      <button type="button" class="tecla-num" data-num="6">6</button>
+                    </div>
+                    <div class="fila-teclas">
+                      <button type="button" class="tecla-num" data-num="7">7</button>
+                      <button type="button" class="tecla-num" data-num="8">8</button>
+                      <button type="button" class="tecla-num" data-num="9">9</button>
+                    </div>
+                    <div class="fila-teclas">
+                      <button type="button" class="tecla-num tecla-borrar" id="btn-teclado-borrar">⌫ Borrar</button>
+                      <button type="button" class="tecla-num" data-num="0">0</button>
+                      <button type="button" class="tecla-num tecla-comprobar" id="btn-teclado-comprobar">✓ OK</button>
+                    </div>
+                  </div>
+
+                  <!-- Mensaje de retroalimentación -->
+                  <div class="retroalimentacion-caja" id="caja-mensaje" style="display: none;"></div>
+
+                  <!-- Pista pedagógica con dibujos de objetos cuando hay error -->
+                  <div class="pista-pedagogica-caja" id="caja-pista-visual" style="display: none;">
+                    <div class="pista-titulo">
+                      <span>💡 Pista con dibujos:</span>
+                    </div>
+                    <p class="pista-subtitulo" id="pista-texto-subtitulo">Multiplicar significa sumar en grupos iguales:</p>
+                    <div class="pista-grupos-contenedor" id="pista-grupos-contenedor">
+                      <!-- Se generan los grupos visuales -->
+                    </div>
+                    <p class="pista-resumen-suma" id="pista-resumen-suma"></p>
+                    <button type="button" class="btn btn-secundario btn-reintentar" id="btn-reintentar">¡Entendido, lo intento de nuevo!</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Modal de dibujo completado -->
+            <div class="modal-victoria" id="modal-victoria" style="display: none;">
+              <div class="modal-victoria-tarjeta">
+                <div class="victoria-icono">🎉🚀🎨</div>
+                <h3 class="victoria-titulo">¡Completaste el Dibujo Mágico!</h3>
+                <p class="victoria-descripcion" id="victoria-texto">¡Has coloreado todo el Cohete Espacial dominando la tabla del 3!</p>
+                <div class="victoria-botones">
+                  <button type="button" class="btn btn-principal" id="btn-victoria-repetir">Jugar otra vez 🔁</button>
+                  <button type="button" class="btn btn-secundario" id="btn-victoria-otra-tabla">Probar otra tabla 🌟</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JUEGO 2: CARRERA DE 60 SEGUNDOS -->
+          <div class="vista-juego" id="vista-carrera-60" style="display: none;">
+            <div class="carrera-contenedor">
+              <div class="carrera-cabecera">
+                <h3 class="juego-subtitulo">⚡ Carrera de 60 Segundos</h3>
+                <p class="juego-texto-guia">¡Responde todas las multiplicaciones que puedas antes de que el reloj llegue a cero!</p>
+              </div>
+
+              <div class="carrera-marcadores">
+                <div class="marcador-tarjeta marcador-tiempo">
+                  <span class="marcador-etiqueta">⏱️ Tiempo</span>
+                  <span class="marcador-valor" id="carrera-tiempo">60s</span>
+                </div>
+                <div class="marcador-tarjeta marcador-puntos">
+                  <span class="marcador-etiqueta">⭐ Aciertos</span>
+                  <span class="marcador-valor" id="carrera-aciertos">0</span>
+                </div>
+                <div class="marcador-tarjeta marcador-racha">
+                  <span class="marcador-etiqueta">🔥 Racha</span>
+                  <span class="marcador-valor" id="carrera-racha">0</span>
+                </div>
+              </div>
+
+              <!-- Pantalla de inicio de carrera -->
+              <div class="carrera-pantalla-inicio" id="carrera-inicio">
+                <p class="carrera-aviso">¿Listo para el desafío? Tienes 60 segundos.</p>
+                <button type="button" class="btn btn-principal btn-grande" id="btn-iniciar-carrera">¡Iniciar Carrera! 🏁</button>
+              </div>
+
+              <!-- Área de preguntas de la carrera -->
+              <div class="carrera-pantalla-juego" id="carrera-juego" style="display: none;">
+                <div class="carrera-pregunta-caja">
+                  <span class="carrera-operacion" id="carrera-pregunta-texto">4 × 5 = ?</span>
+                </div>
+                
+                <div class="carrera-opciones-grid" id="carrera-opciones">
+                  <!-- Opciones generadas dinámicamente -->
+                </div>
+              </div>
+
+              <!-- Pantalla de fin de carrera -->
+              <div class="carrera-pantalla-fin" id="carrera-fin" style="display: none;">
+                <div class="victoria-icono">🏁🏆</div>
+                <h3 class="victoria-titulo">¡Tiempo cumplido!</h3>
+                <p class="victoria-descripcion" id="carrera-resultado-texto">¡Lograste 15 aciertos en 60 segundos!</p>
+                <button type="button" class="btn btn-principal" id="btn-reiniciar-carrera">Correr otra vez ⚡</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Para papás y maestros -->
+    <section class="seccion seccion-papas" id="papas-y-maestros">
+      <div class="contenedor">
+        <div class="seccion-encabezado">
+          <span class="seccion-etiqueta">Información pedagógica</span>
+          <h2 class="seccion-titulo">Para papás y maestros: por qué así se aprende mejor</h2>
+        </div>
+
+        <div class="lista-beneficios">
+          <div class="item-beneficio">
+            <div class="beneficio-icono">✔️</div>
+            <div class="beneficio-contenido">
+              <p><strong>Se aprende haciendo, no solo mirando.</strong> El niño piensa y escribe cada resultado. Recordar activamente una respuesta ayuda más que leerla muchas veces.</p>
+            </div>
+          </div>
+
+          <div class="item-beneficio">
+            <div class="beneficio-icono">✔️</div>
+            <div class="beneficio-contenido">
+              <p><strong>Respuesta inmediata.</strong> Sabe al momento si acertó, así corrige rápido y no repite el error.</p>
+            </div>
+          </div>
+
+          <div class="item-beneficio">
+            <div class="beneficio-icono">✔️</div>
+            <div class="beneficio-contenido">
+              <p><strong>Entiende, no solo memoriza.</strong> Cuando se equivoca, ve grupos de objetos que muestran qué significa multiplicar (3 × 4 son tres grupos de cuatro).</p>
+            </div>
+          </div>
+
+          <div class="item-beneficio">
+            <div class="beneficio-icono">✔️</div>
+            <div class="beneficio-contenido">
+              <p><strong>Sin presión.</strong> No hay castigos ni cronómetro obligatorio. Cada niño avanza a su ritmo.</p>
+            </div>
+          </div>
+
+          <div class="item-beneficio">
+            <div class="beneficio-icono">✔️</div>
+            <div class="beneficio-contenido">
+              <p><strong>Motiva a seguir.</strong> Ver aparecer el dibujo da ganas de completarlo, y repetir se vuelve un juego en lugar de una tarea.</p>
+            </div>
+          </div>
+
+          <div class="item-beneficio">
+            <div class="beneficio-icono">✔️</div>
+            <div class="beneficio-contenido">
+              <p><strong>Práctica corta y frecuente.</strong> Con sesiones de pocos minutos se aprende mejor que con una sola práctica larga.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Datos útiles -->
+        <div class="caja-datos-utiles">
+          <div class="datos-utiles-icono">📌</div>
+          <div class="datos-utiles-contenido">
+            <p><strong>Datos útiles:</strong> pensado para niños de [EDAD, por ejemplo 6 a 10 años], cubre las tablas del 2 al 9 y funciona en celular, tablet y computador.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Preguntas frecuentes -->
+    <section class="seccion seccion-faq" id="preguntas">
+      <div class="contenedor contenedor-faq">
+        <div class="seccion-encabezado">
+          <span class="seccion-etiqueta">Resolvemos tus dudas</span>
+          <h2 class="seccion-titulo">Preguntas frecuentes</h2>
+        </div>
+
+        <div class="acordeon-faq" id="acordeon-faq">
+          <!-- Pregunta 1 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Para qué edad es?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Está pensado para niños de [6 a 10 años], que están aprendiendo o repasando las tablas de multiplicar.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Mi hijo necesita saber algo antes?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Solo saber sumar. Si ya sabe contar de 2 en 2 o de 5 en 5, le va a resultar más fácil.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Qué tablas puede practicar?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Las tablas del 2 al 9. Puede elegir la que quiera y repetirla las veces que necesite.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Qué pasa si se equivoca?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Nada grave. Le mostramos un mensaje amable y una pista con dibujos para que entienda la respuesta y lo intente de nuevo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 5 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Cuánto tiempo debe practicar al día?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Con [10 a 15 minutos] al día es suficiente. Es mejor practicar poquito cada día que mucho un solo día.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 6 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Es gratis?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>[Sí, es gratis. / Escribe aquí cómo funciona el costo.]</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 7 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Piden datos de mi hijo?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>[No hace falta registrarse ni dar datos del niño para jugar. / Escribe aquí qué datos pides y para qué.]</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 8 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Se puede usar en el celular o la tablet?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Sí, funciona en celular, tablet y computador, desde el navegador y sin instalar nada.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 9 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Sirve para usarlo en el colegio?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>Sí. Los maestros pueden usarlo en clase o dejarlo como práctica para la casa.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pregunta 10 -->
+          <div class="faq-item">
+            <button type="button" class="faq-pregunta" aria-expanded="false">
+              <span class="faq-pregunta-texto">¿Reemplaza las clases o las tareas?</span>
+              <span class="faq-icono" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-respuesta">
+              <div class="faq-respuesta-interior">
+                <p>No. Es un apoyo para practicar y reforzar lo que el niño ya ve en el colegio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7. Pie de página -->
+  <footer class="pie-pagina">
+    <div class="contenedor contenedor-pie">
+      <a href="#portada" class="pie-logo-enlace">
+        <img src="001.png" alt="MultiFácil" class="pie-logo-imagen">
+      </a>
+      <p class="pie-texto">Aprender las tablas de multiplicar jugando</p>
+    </div>
+  </footer>
+
+  <!-- Script interactivo -->
+  <script src="juego.js"></script>
+</body>
+</html>
