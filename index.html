@@ -159,14 +159,14 @@
           </div>
 
           <!-- Tarjeta 3: Memoria de parejas -->
-          <div class="tarjeta-actividad tarjeta-proxima">
-            <span class="etiqueta-proximamente">Próximamente</span>
+          <div class="tarjeta-actividad tarjeta-destacada">
+            <span class="etiqueta-proximamente etiqueta-jugable">¡A Jugar!</span>
             <div class="actividad-icono-caja">
               <span class="actividad-icono">🃏</span>
             </div>
             <h3 class="actividad-nombre">Memoria de parejas</h3>
             <p class="actividad-frase">Une cada multiplicación con su resultado.</p>
-            <button type="button" class="btn btn-inactivo btn-actividad" disabled>Próximamente</button>
+            <button type="button" class="btn btn-principal btn-actividad" id="btn-memoria-jugar">Jugar</button>
           </div>
 
           <!-- Tarjeta 4: Completa la tabla -->
@@ -192,6 +192,9 @@
             </button>
             <button type="button" class="btn-pestana" id="tab-carrera-60">
               <span class="pestana-icono">⚡</span> Carrera de 60s
+            </button>
+            <button type="button" class="btn-pestana" id="tab-memoria">
+              <span class="pestana-icono">🃏</span> Memoria de Parejas
             </button>
           </div>
 
@@ -416,6 +419,71 @@
                 <h3 class="victoria-titulo">¡Tiempo cumplido!</h3>
                 <p class="victoria-descripcion" id="carrera-resultado-texto">¡Lograste 15 aciertos en 60 segundos!</p>
                 <button type="button" class="btn btn-principal" id="btn-reiniciar-carrera">Correr otra vez ⚡</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- JUEGO 3: MEMORIA DE PAREJAS -->
+          <div class="vista-juego" id="vista-memoria" style="display: none;">
+            <div class="memoria-contenedor">
+              <div class="memoria-cabecera">
+                <h3 class="juego-subtitulo">🃏 Memoria de Parejas</h3>
+                <p class="juego-texto-guia">¡Encuentra cada multiplicación con su resultado volteando las tarjetas!</p>
+              </div>
+
+              <!-- Selector de tabla para memoria -->
+              <div class="selector-tablas-caja selector-memoria-caja">
+                <span class="selector-titulo">👉 Elige la tabla a practicar:</span>
+                <div class="lista-botones-tablas" id="selector-tablas-memoria">
+                  <button type="button" class="btn-tabla-memoria activa" data-tabla="todas">⭐ Variadas (2-9)</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="2">Tabla del 2</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="3">Tabla del 3</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="4">Tabla del 4</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="5">Tabla del 5</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="6">Tabla del 6</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="7">Tabla del 7</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="8">Tabla del 8</button>
+                  <button type="button" class="btn-tabla-memoria" data-tabla="9">Tabla del 9</button>
+                </div>
+              </div>
+
+              <!-- Marcadores de memoria -->
+              <div class="memoria-marcadores">
+                <div class="marcador-tarjeta">
+                  <span class="marcador-etiqueta">🎯 Parejas encontradas</span>
+                  <span class="marcador-valor" id="memoria-parejas">0 / 6</span>
+                </div>
+                <div class="marcador-tarjeta">
+                  <span class="marcador-etiqueta">👀 Intentos</span>
+                  <span class="marcador-valor" id="memoria-intentos">0</span>
+                </div>
+                <div class="marcador-tarjeta">
+                  <span class="marcador-etiqueta">⭐ Estrellas</span>
+                  <span class="marcador-valor" id="memoria-estrellas">⭐⭐⭐</span>
+                </div>
+              </div>
+
+              <!-- Cuadrícula de tarjetas de memoria -->
+              <div class="memoria-cuadricula" id="memoria-cuadricula" aria-label="Tablero de cartas de memoria">
+                <!-- Se generan dinámicamente 12 tarjetas (6 parejas) -->
+              </div>
+
+              <!-- Botón de reiniciar partida -->
+              <div class="memoria-acciones">
+                <button type="button" class="btn btn-secundario" id="btn-reiniciar-memoria">Barajar de nuevo 🔄</button>
+              </div>
+
+              <!-- Modal de victoria de memoria -->
+              <div class="modal-victoria" id="modal-victoria-memoria" style="display: none;">
+                <div class="modal-victoria-tarjeta">
+                  <div class="victoria-icono">🎉🃏🏆</div>
+                  <h3 class="victoria-titulo">¡Excelente memoria!</h3>
+                  <p class="victoria-descripcion" id="victoria-memoria-texto">¡Completaste las 6 parejas en 8 intentos!</p>
+                  <div class="victoria-botones">
+                    <button type="button" class="btn btn-principal" id="btn-victoria-memoria-repetir">Jugar otra vez 🔁</button>
+                    <button type="button" class="btn btn-secundario" id="btn-victoria-memoria-otra-tabla">Probar otra tabla 🌟</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

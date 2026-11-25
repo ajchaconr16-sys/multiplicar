@@ -145,33 +145,46 @@ document.addEventListener('DOMContentLoaded', () => {
      ========================================================== */
   const tabDibujo = document.getElementById('tab-dibujo-magico');
   const tabCarrera = document.getElementById('tab-carrera-60');
+  const tabMemoria = document.getElementById('tab-memoria');
   const vistaDibujo = document.getElementById('vista-dibujo-magico');
   const vistaCarrera = document.getElementById('vista-carrera-60');
+  const vistaMemoria = document.getElementById('vista-memoria');
 
   function activarJuego(nombre) {
     if (nombre === 'dibujo') {
       tabDibujo.classList.add('activa');
       tabCarrera.classList.remove('activa');
+      if (tabMemoria) tabMemoria.classList.remove('activa');
       vistaDibujo.style.display = 'block';
       vistaCarrera.style.display = 'none';
+      if (vistaMemoria) vistaMemoria.style.display = 'none';
       const input = document.getElementById('input-resultado');
       if (input) setTimeout(() => input.focus(), 150);
-    } else {
+    } else if (nombre === 'carrera') {
       tabCarrera.classList.add('activa');
       tabDibujo.classList.remove('activa');
+      if (tabMemoria) tabMemoria.classList.remove('activa');
       vistaCarrera.style.display = 'block';
       vistaDibujo.style.display = 'none';
+      if (vistaMemoria) vistaMemoria.style.display = 'none';
+    } else if (nombre === 'memoria') {
+      if (tabMemoria) tabMemoria.classList.add('activa');
+      tabDibujo.classList.remove('activa');
+      tabCarrera.classList.remove('activa');
+      if (vistaMemoria) vistaMemoria.style.display = 'block';
+      vistaDibujo.style.display = 'none';
+      vistaCarrera.style.display = 'none';
     }
   }
 
-  if (tabDibujo && tabCarrera) {
-    tabDibujo.addEventListener('click', () => activarJuego('dibujo'));
-    tabCarrera.addEventListener('click', () => activarJuego('carrera'));
-  }
+  if (tabDibujo) tabDibujo.addEventListener('click', () => activarJuego('dibujo'));
+  if (tabCarrera) tabCarrera.addEventListener('click', () => activarJuego('carrera'));
+  if (tabMemoria) tabMemoria.addEventListener('click', () => activarJuego('memoria'));
 
   // Enlaces de tarjetas principales
   const btnDibujoCard = document.getElementById('btn-dibujo-magico');
   const btnCarreraCard = document.getElementById('btn-carrera-jugar');
+  const btnMemoriaCard = document.getElementById('btn-memoria-jugar');
   const zonaJuegos = document.getElementById('zona-juego');
 
   function scrollHaciaJuegos() {
@@ -190,6 +203,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnCarreraCard) {
     btnCarreraCard.addEventListener('click', () => {
       activarJuego('carrera');
+      scrollHaciaJuegos();
+    });
+  }
+
+  if (btnMemoriaCard) {
+    btnMemoriaCard.addEventListener('click', () => {
+      activarJuego('memoria');
       scrollHaciaJuegos();
     });
   }
@@ -621,4 +641,230 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnReiniciarCarrera) {
     btnReiniciarCarrera.addEventListener('click', iniciarCarrera);
   }
+
+  /* ==========================================================
+     6. JUEGO: MEMORIA DE PAREJAS
+     ========================================================== */
+  const memoriaCuadricula = document.getElementById('memoria-cuadricula');
+  const memoriaParejasEl = document.getElementById('memoria-parejas');
+  const memoriaIntentosEl = document.getElementById('memoria-intentos');
+  const memoriaEstrellasEl = document.getElementById('memoria-estrellas');
+  const btnReiniciarMemoria = document.getElementById('btn-reiniciar-memoria');
+  const modalVictoriaMemoria = document.getElementById('modal-victoria-memoria');
+  const victoriaMemoriaTexto = document.getElementById('victoria-memoria-texto');
+  const btnVictoriaMemoriaRepetir = document.getElementById('btn-victoria-memoria-repetir');
+  const btnVictoriaMemoriaOtraTabla = document.getElementById('btn-victoria-memoria-otra-tabla');
+  const botonesTablaMemoria = document.querySelectorAll('.btn-tabla-memoria');
+
+  let tablaMemoriaSeleccionada = 'todas';
+  let primeraCarta = null;
+  let segundaCarta = null;
+  let bloqueoTablero = false;
+  let parejasEncontradas = 0;
+  let intentosMemoria = 0;
+  const TOTAL_PAREJAS_MEMORIA = 6;
+
+  function calcularEstrellasMemoria(intentos) {
+    if (intentos <= 8) return '⭐⭐⭐';
+    if (intentos <= 12) return '⭐⭐';
+    return '⭐';
+  }
+
+  function generarParejasMemoria(tabla) {
+    const pares = [];
+    const operacionesUsadas = new Set();
+
+    while (pares.length < TOTAL_PAREJAS_MEMORIA) {
+      let fA, fB;
+      if (tabla === 'todas') {
+        fA = Math.floor(Math.random() * 8) + 2; // 2 al 9
+        fB = Math.floor(Math.random() * 8) + 2; // 2 al 9
+      } else {
+        fA = parseInt(tabla, 10);
+        fB = Math.floor(Math.random() * 8) + 2; // 2 al 9
+      }
+
+      const clave = `${fA}x${fB}`;
+      if (!operacionesUsadas.has(clave)) {
+        operacionesUsadas.add(clave);
+        const resultado = fA * fB;
+        const idPar = pares.length + 1;
+        pares.push({
+          idPar,
+          operacion: `${fA} × ${fB}`,
+          resultado: resultado.toString()
+        });
+      }
+    }
+
+    // Aplanar en 12 cartas: 6 con operación y 6 con resultado
+    const cartas = [];
+    pares.forEach(p => {
+      cartas.push({ idPar: p.idPar, texto: p.operacion, tipo: 'op' });
+      cartas.push({ idPar: p.idPar, texto: p.resultado, tipo: 'res' });
+    });
+
+    // Barajar (Fisher-Yates)
+    for (let i = cartas.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [cartas[i], cartas[j]] = [cartas[j], cartas[i]];
+    }
+
+    return cartas;
+  }
+
+  function iniciarJuegoMemoria(tabla = tablaMemoriaSeleccionada) {
+    tablaMemoriaSeleccionada = tabla;
+    primeraCarta = null;
+    segundaCarta = null;
+    bloqueoTablero = false;
+    parejasEncontradas = 0;
+    intentosMemoria = 0;
+
+    if (modalVictoriaMemoria) modalVictoriaMemoria.style.display = 'none';
+    if (memoriaParejasEl) memoriaParejasEl.textContent = `0 / ${TOTAL_PAREJAS_MEMORIA}`;
+    if (memoriaIntentosEl) memoriaIntentosEl.textContent = '0';
+    if (memoriaEstrellasEl) memoriaEstrellasEl.textContent = '⭐⭐⭐';
+
+    // Actualizar botones de selector
+    botonesTablaMemoria.forEach(btn => {
+      const valor = btn.getAttribute('data-tabla');
+      btn.classList.toggle('activa', valor === tablaMemoriaSeleccionada);
+    });
+
+    if (!memoriaCuadricula) return;
+    memoriaCuadricula.innerHTML = '';
+
+    const cartas = generarParejasMemoria(tablaMemoriaSeleccionada);
+    cartas.forEach((c) => {
+      const cartaEl = document.createElement('div');
+      cartaEl.className = 'carta-memoria';
+      cartaEl.setAttribute('data-par-id', c.idPar);
+      cartaEl.setAttribute('tabindex', '0');
+      cartaEl.setAttribute('role', 'button');
+      cartaEl.setAttribute('aria-label', 'Carta oculta');
+
+      const dorso = document.createElement('div');
+      dorso.className = 'carta-cara carta-dorso';
+      dorso.innerHTML = '<span class="carta-dorso-icono">🎯</span><span class="carta-dorso-texto">MultiFácil</span>';
+
+      const frente = document.createElement('div');
+      frente.className = `carta-cara carta-frente ${c.tipo === 'op' ? 'es-operacion' : 'es-resultado'}`;
+      frente.innerHTML = `<span>${c.texto}</span>`;
+
+      cartaEl.appendChild(dorso);
+      cartaEl.appendChild(frente);
+
+      cartaEl.addEventListener('click', () => voltearCartaMemoria(cartaEl));
+      cartaEl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          voltearCartaMemoria(cartaEl);
+        }
+      });
+
+      memoriaCuadricula.appendChild(cartaEl);
+    });
+  }
+
+  function voltearCartaMemoria(carta) {
+    if (bloqueoTablero) return;
+    if (carta.classList.contains('volteada') || carta.classList.contains('emparejada')) return;
+    if (carta === primeraCarta) return;
+
+    sonarTono(440, 'sine', 0.08, 0);
+    carta.classList.add('volteada');
+
+    if (!primeraCarta) {
+      primeraCarta = carta;
+      return;
+    }
+
+    segundaCarta = carta;
+    intentosMemoria++;
+    if (memoriaIntentosEl) memoriaIntentosEl.textContent = intentosMemoria;
+    if (memoriaEstrellasEl) memoriaEstrellasEl.textContent = calcularEstrellasMemoria(intentosMemoria);
+
+    const parA = primeraCarta.getAttribute('data-par-id');
+    const parB = segundaCarta.getAttribute('data-par-id');
+
+    if (parA === parB) {
+      // ¡Pareja encontrada!
+      sonarAcierto();
+      primeraCarta.classList.add('emparejada');
+      segundaCarta.classList.add('emparejada');
+      parejasEncontradas++;
+
+      if (memoriaParejasEl) memoriaParejasEl.textContent = `${parejasEncontradas} / ${TOTAL_PAREJAS_MEMORIA}`;
+
+      primeraCarta = null;
+      segundaCarta = null;
+
+      if (parejasEncontradas === TOTAL_PAREJAS_MEMORIA) {
+        sonarVictoria();
+        setTimeout(() => {
+          if (modalVictoriaMemoria) {
+            const estrellas = calcularEstrellasMemoria(intentosMemoria);
+            if (victoriaMemoriaTexto) {
+              victoriaMemoriaTexto.innerHTML = `¡Encontraste las <strong>${TOTAL_PAREJAS_MEMORIA} parejas</strong> en <strong>${intentosMemoria} intentos</strong>!<br>Tu puntuación: <strong>${estrellas}</strong>`;
+            }
+            modalVictoriaMemoria.style.display = 'flex';
+          }
+        }, 500);
+      }
+    } else {
+      // No coinciden
+      bloqueoTablero = true;
+      sonarError();
+      primeraCarta.classList.add('error-anim');
+      segundaCarta.classList.add('error-anim');
+
+      setTimeout(() => {
+        if (primeraCarta) {
+          primeraCarta.classList.remove('volteada', 'error-anim');
+        }
+        if (segundaCarta) {
+          segundaCarta.classList.remove('volteada', 'error-anim');
+        }
+        primeraCarta = null;
+        segundaCarta = null;
+        bloqueoTablero = false;
+      }, 900);
+    }
+  }
+
+  // Eventos de selección de tabla para memoria
+  botonesTablaMemoria.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tabla = btn.getAttribute('data-tabla');
+      iniciarJuegoMemoria(tabla);
+    });
+  });
+
+  if (btnReiniciarMemoria) {
+    btnReiniciarMemoria.addEventListener('click', () => {
+      iniciarJuegoMemoria(tablaMemoriaSeleccionada);
+    });
+  }
+
+  if (btnVictoriaMemoriaRepetir) {
+    btnVictoriaMemoriaRepetir.addEventListener('click', () => {
+      iniciarJuegoMemoria(tablaMemoriaSeleccionada);
+    });
+  }
+
+  if (btnVictoriaMemoriaOtraTabla) {
+    btnVictoriaMemoriaOtraTabla.addEventListener('click', () => {
+      let siguiente;
+      if (tablaMemoriaSeleccionada === 'todas') siguiente = '2';
+      else {
+        const num = parseInt(tablaMemoriaSeleccionada, 10);
+        siguiente = num >= 9 ? 'todas' : (num + 1).toString();
+      }
+      iniciarJuegoMemoria(siguiente);
+    });
+  }
+
+  // Inicializar juego de memoria en segundo plano
+  iniciarJuegoMemoria('todas');
 });
