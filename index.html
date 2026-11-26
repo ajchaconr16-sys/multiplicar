@@ -55,7 +55,7 @@
           <div class="tarjeta-hero-escaparate">
             <div class="hero-escaparate-encabezado">
               <span class="escaparate-insignia">🎯 MultiFácil</span>
-              <span class="escaparate-puntos">⭐ 100 pts</span>
+              <span class="escaparate-puntos" id="contador-puntos-global">⭐ 100 pts</span>
             </div>
 
             <div class="hero-operacion-caja">
@@ -179,6 +179,28 @@
             <p class="actividad-frase">Llena los huecos de la tabla.</p>
             <button type="button" class="btn btn-inactivo btn-actividad" disabled>Próximamente</button>
           </div>
+
+          <!-- Tarjeta 5: Atrapa las burbujas -->
+          <div class="tarjeta-actividad tarjeta-destacada">
+            <span class="etiqueta-proximamente etiqueta-jugable">¡A Jugar!</span>
+            <div class="actividad-icono-caja">
+              <span class="actividad-icono">🫧</span>
+            </div>
+            <h3 class="actividad-nombre">Atrapa las burbujas</h3>
+            <p class="actividad-frase">Revienta la burbuja correcta antes de que escape.</p>
+            <button type="button" class="btn btn-principal btn-actividad" id="btn-burbujas-jugar">Jugar</button>
+          </div>
+
+          <!-- Tarjeta 6: Saltos de rana -->
+          <div class="tarjeta-actividad tarjeta-destacada">
+            <span class="etiqueta-proximamente etiqueta-jugable">¡A Jugar!</span>
+            <div class="actividad-icono-caja">
+              <span class="actividad-icono">🐸</span>
+            </div>
+            <h3 class="actividad-nombre">Saltos de rana</h3>
+            <p class="actividad-frase">Salta por los nenúfares para descubrir el total.</p>
+            <button type="button" class="btn btn-principal btn-actividad" id="btn-rana-jugar">Jugar</button>
+          </div>
         </div>
 
         <!-- ==============================================
@@ -195,6 +217,12 @@
             </button>
             <button type="button" class="btn-pestana" id="tab-memoria">
               <span class="pestana-icono">🃏</span> Memoria de Parejas
+            </button>
+            <button type="button" class="btn-pestana" id="tab-burbujas">
+              <span class="pestana-icono">🫧</span> Atrapa las Burbujas
+            </button>
+            <button type="button" class="btn-pestana" id="tab-rana">
+              <span class="pestana-icono">🐸</span> Saltos de Rana
             </button>
           </div>
 
@@ -483,6 +511,174 @@
                     <button type="button" class="btn btn-principal" id="btn-victoria-memoria-repetir">Jugar otra vez 🔁</button>
                     <button type="button" class="btn btn-secundario" id="btn-victoria-memoria-otra-tabla">Probar otra tabla 🌟</button>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JUEGO 5: ATRAPA LAS BURBUJAS -->
+          <div class="vista-juego" id="vista-burbujas" style="display: none;">
+            <div class="burbujas-contenedor">
+              <div class="burbujas-cabecera">
+                <h3 class="juego-subtitulo">🫧 Atrapa las Burbujas</h3>
+                <p class="juego-texto-guia">¡Toca la burbuja con el resultado correcto antes de que suba y escape!</p>
+              </div>
+
+              <!-- Selector de tabla para burbujas -->
+              <div class="selector-tablas-caja selector-burbujas-caja">
+                <span class="selector-titulo">👉 Elige la tabla a practicar:</span>
+                <div class="lista-botones-tablas" id="selector-tablas-burbujas">
+                  <button type="button" class="btn-tabla-burbujas activa" data-tabla="todas">⭐ Todas (2-10)</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="2">Tabla del 2</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="3">Tabla del 3</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="4">Tabla del 4</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="5">Tabla del 5</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="6">Tabla del 6</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="7">Tabla del 7</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="8">Tabla del 8</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="9">Tabla del 9</button>
+                  <button type="button" class="btn-tabla-burbujas" data-tabla="10">Tabla del 10</button>
+                </div>
+              </div>
+
+              <!-- Marcadores de burbujas -->
+              <div class="burbujas-marcadores">
+                <div class="marcador-tarjeta marcador-vidas">
+                  <span class="marcador-etiqueta">❤️ Vidas</span>
+                  <span class="marcador-valor" id="burbujas-vidas">❤️❤️❤️</span>
+                </div>
+                <div class="marcador-tarjeta marcador-puntos">
+                  <span class="marcador-etiqueta">⭐ Puntos</span>
+                  <span class="marcador-valor" id="burbujas-puntos">0</span>
+                </div>
+                <div class="marcador-tarjeta marcador-record">
+                  <span class="marcador-etiqueta">🏆 Récord</span>
+                  <span class="marcador-valor" id="burbujas-record">0</span>
+                </div>
+              </div>
+
+              <!-- Pantalla de inicio de burbujas -->
+              <div class="burbujas-pantalla-inicio" id="burbujas-inicio">
+                <div class="burbujas-intro-icono">🫧✨</div>
+                <p class="burbujas-aviso">Resuelve la multiplicación y revienta la burbuja correcta. ¡Si la correcta escapa por arriba, pierdes una vida!</p>
+                <button type="button" class="btn btn-principal btn-grande" id="btn-iniciar-burbujas">¡Iniciar juego! 🫧</button>
+              </div>
+
+              <!-- Escenario activo de burbujas -->
+              <div class="burbujas-pantalla-juego" id="burbujas-juego" style="display: none;">
+                <div class="burbujas-operacion-caja">
+                  <span class="burbujas-etiqueta-busca">Busca la burbuja con el resultado de:</span>
+                  <span class="burbujas-operacion-texto" id="burbujas-pregunta-texto">3 × 4 = ?</span>
+                </div>
+
+                <!-- Mensaje de aviso flotante -->
+                <div class="burbujas-feedback" id="burbujas-feedback" style="display: none;"></div>
+
+                <!-- Contenedor estanque de burbujas -->
+                <div class="burbujas-escenario" id="burbujas-escenario" aria-label="Área de juego de burbujas flotantes">
+                  <!-- Las burbujas se inyectan dinámicamente aquí -->
+                </div>
+              </div>
+
+              <!-- Pantalla de fin de partida de burbujas -->
+              <div class="burbujas-pantalla-fin" id="burbujas-fin" style="display: none;">
+                <div class="victoria-icono">🫧🏆</div>
+                <h3 class="victoria-titulo">¡Fin de la partida!</h3>
+                <p class="victoria-descripcion" id="burbujas-resultado-texto">¡Lograste 0 puntos!</p>
+                <div class="victoria-botones">
+                  <button type="button" class="btn btn-principal" id="btn-reiniciar-burbujas">Jugar otra vez 🔁</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- JUEGO 6: SALTOS DE RANA -->
+          <div class="vista-juego" id="vista-rana" style="display: none;">
+            <div class="rana-contenedor">
+              <div class="rana-cabecera">
+                <h3 class="juego-subtitulo">🐸 Saltos de Rana</h3>
+                <p class="juego-texto-guia">¡Ayuda a la rana a saltar de nenúfar en nenúfar y descubre el resultado de la multiplicación!</p>
+              </div>
+
+              <!-- Selector de tabla para rana (2 al 10 o Todas) -->
+              <div class="selector-tablas-caja selector-rana-caja">
+                <span class="selector-titulo">👉 Elige la tabla a practicar:</span>
+                <div class="lista-botones-tablas" id="selector-tablas-rana">
+                  <button type="button" class="btn-tabla-rana activa" data-tabla="todas">⭐ Todas (2-10)</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="2">Tabla del 2</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="3">Tabla del 3</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="4">Tabla del 4</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="5">Tabla del 5</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="6">Tabla del 6</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="7">Tabla del 7</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="8">Tabla del 8</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="9">Tabla del 9</button>
+                  <button type="button" class="btn-tabla-rana" data-tabla="10">Tabla del 10</button>
+                </div>
+              </div>
+
+              <!-- Marcadores de rana -->
+              <div class="rana-marcadores">
+                <div class="marcador-tarjeta">
+                  <span class="marcador-etiqueta">🎯 Ejercicio</span>
+                  <span class="marcador-valor" id="rana-progreso">1 / 10</span>
+                </div>
+                <div class="marcador-tarjeta">
+                  <span class="marcador-etiqueta">⭐ Puntos</span>
+                  <span class="marcador-valor" id="rana-puntos">0</span>
+                </div>
+                <div class="marcador-tarjeta">
+                  <span class="marcador-etiqueta">🌟 Estrellas</span>
+                  <span class="marcador-valor" id="rana-estrellas">⭐⭐⭐</span>
+                </div>
+              </div>
+
+              <!-- Pantalla de juego de la rana -->
+              <div class="rana-pantalla-juego" id="rana-juego">
+                <!-- Enunciado de multiplicación y regla didáctica -->
+                <div class="rana-enunciado-caja">
+                  <div class="rana-operacion-display" id="rana-operacion-display">4 × 3 = ?</div>
+                  <p class="rana-regla-guia" id="rana-regla-guia">
+                    Salta de <strong id="rana-tamano-texto">4</strong> en <strong id="rana-tamano-texto2">4</strong>, ¡da <strong id="rana-cantidad-texto">3</strong> saltos!
+                  </p>
+                </div>
+
+                <!-- Estanque con nenúfares y rana animada -->
+                <div class="rana-estanque-envoltorio">
+                  <div class="rana-estanque" id="rana-estanque" aria-label="Estanque de nenúfares">
+                    <div class="rana-nenufares-contenedor" id="rana-nenufares-contenedor"></div>
+                  </div>
+                </div>
+
+                <!-- Panel de acción: botón de saltar -->
+                <div class="rana-accion-saltar" id="rana-accion-saltar">
+                  <button type="button" class="btn btn-principal btn-grande btn-salto-gigante" id="btn-rana-saltar">
+                    ¡Salta! 🐸 <span class="rana-contador-badge" id="rana-contador-badge">(Salto 0 de 3)</span>
+                  </button>
+                </div>
+
+                <!-- Panel de pregunta final cuando terminan los saltos -->
+                <div class="rana-panel-pregunta" id="rana-panel-pregunta" style="display: none;">
+                  <h4 class="rana-pregunta-titulo">¿A qué número llegó la rana?</h4>
+                  <div class="rana-opciones-grid" id="rana-opciones-grid">
+                    <!-- 3 opciones de respuesta rápida -->
+                  </div>
+                </div>
+
+                <!-- Pista visual tras fallo -->
+                <div class="rana-pista-visual" id="rana-pista-visual" style="display: none;">
+                  <span class="rana-pista-icono">💡</span>
+                  <div class="rana-pista-contenido" id="rana-pista-contenido"></div>
+                </div>
+              </div>
+
+              <!-- Pantalla de fin de partida de rana -->
+              <div class="rana-pantalla-fin" id="rana-fin" style="display: none;">
+                <div class="victoria-icono">🐸🎉🏆</div>
+                <h3 class="victoria-titulo">¡Completaste los 10 ejercicios!</h3>
+                <p class="victoria-descripcion" id="rana-resultado-texto">¡Lograste 100 puntos con 3 estrellas!</p>
+                <div class="victoria-botones">
+                  <button type="button" class="btn btn-principal" id="btn-reiniciar-rana">Jugar otra vez 🔁</button>
                 </div>
               </div>
             </div>

@@ -1726,3 +1726,463 @@ button {
     font-size: 1.3rem;
   }
 }
+
+/* ==========================================================
+   Juego 5: Atrapa las Burbujas
+   ========================================================== */
+
+.burbujas-contenedor {
+  padding: 10px 0;
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.selector-burbujas-caja {
+  margin-bottom: 24px;
+}
+
+.btn-tabla-burbujas {
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  border: 2px solid var(--color-borde);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-tabla-burbujas:hover {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+  transform: translateY(-2px);
+}
+
+.btn-tabla-burbujas.activa {
+  background: var(--color-secundario);
+  color: #78350F;
+  border-color: #D97706;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.45);
+  transform: scale(1.05);
+}
+
+.burbujas-marcadores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.burbujas-pantalla-inicio,
+.burbujas-pantalla-fin {
+  background: var(--color-blanco);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio-pequeno);
+  padding: 40px 24px;
+  box-shadow: var(--sombra-tarjeta);
+}
+
+.burbujas-intro-icono {
+  font-size: 3.8rem;
+  margin-bottom: 12px;
+}
+
+.burbujas-aviso {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-texto);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.burbujas-operacion-caja {
+  background: #EFF6FF;
+  border: 3px solid var(--color-primario);
+  border-radius: 20px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.burbujas-etiqueta-busca {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-primario-oscuro);
+  margin-bottom: 6px;
+}
+
+.burbujas-operacion-texto {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+.burbujas-feedback {
+  background: #FEF3C7;
+  border: 2px solid #F59E0B;
+  color: #92400E;
+  border-radius: 50px;
+  padding: 10px 24px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin: 0 auto 16px auto;
+  display: inline-block;
+  animation: popIn 0.3s ease;
+}
+
+.burbujas-escenario {
+  position: relative;
+  height: 400px;
+  width: 100%;
+  border-radius: 24px;
+  background: linear-gradient(180deg, #E0F2FE 0%, #BAE6FD 100%);
+  border: 4px solid #38BDF8;
+  box-shadow: inset 0 6px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  touch-action: manipulation;
+  margin-bottom: 20px;
+}
+
+/* Burbujas flotantes */
+.burbuja {
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: #1E293B;
+  cursor: pointer;
+  user-select: none;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 30%, rgba(56, 189, 248, 0.6) 70%, rgba(14, 165, 233, 0.85) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.28), inset 0 0 14px rgba(255, 255, 255, 0.7);
+  transition: transform 0.15s ease, opacity 0.2s ease;
+  will-change: transform, top;
+}
+
+.burbuja:hover {
+  transform: scale(1.1);
+}
+
+.burbuja.color-rosa {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 30%, rgba(244, 114, 182, 0.6) 70%, rgba(236, 72, 153, 0.85) 100%);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.28), inset 0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+.burbuja.color-amarillo {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 30%, rgba(250, 204, 21, 0.6) 70%, rgba(234, 179, 8, 0.85) 100%);
+  box-shadow: 0 8px 20px rgba(234, 179, 8, 0.28), inset 0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+.burbuja.color-morado {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 30%, rgba(192, 132, 252, 0.6) 70%, rgba(168, 85, 247, 0.85) 100%);
+  box-shadow: 0 8px 20px rgba(168, 85, 247, 0.28), inset 0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+.burbuja.color-verde {
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 30%, rgba(74, 222, 128, 0.6) 70%, rgba(34, 197, 94, 0.85) 100%);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.28), inset 0 0 14px rgba(255, 255, 255, 0.7);
+}
+
+.burbuja.pop-anim {
+  animation: popBurst 0.35s ease-out forwards;
+  pointer-events: none;
+}
+
+.burbuja.shake-anim {
+  animation: shakeBurbuja 0.4s ease;
+}
+
+@keyframes popBurst {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.8; filter: brightness(1.3); }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes shakeBurbuja {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+/* ==========================================================
+   Juego 6: Saltos de Rana
+   ========================================================== */
+
+.rana-contenedor {
+  padding: 10px 0;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.selector-rana-caja {
+  margin-bottom: 24px;
+}
+
+.btn-tabla-rana {
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.98rem;
+  background: var(--color-blanco);
+  color: var(--color-texto);
+  border: 2px solid var(--color-borde);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-tabla-rana:hover {
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+  transform: translateY(-2px);
+}
+
+.btn-tabla-rana.activa {
+  background: var(--color-secundario);
+  color: #78350F;
+  border-color: #D97706;
+  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.45);
+  transform: scale(1.05);
+}
+
+.rana-marcadores {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.rana-enunciado-caja {
+  background: #ECFDF5;
+  border: 3px solid #10B981;
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.rana-operacion-display {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #065F46;
+}
+
+.rana-regla-guia {
+  font-size: 1.15rem;
+  color: #047857;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.rana-estanque-envoltorio {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px 0 20px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+.rana-estanque {
+  min-width: 520px;
+  min-height: 200px;
+  background: linear-gradient(180deg, #A7F3D0 0%, #6EE7B7 100%);
+  border: 4px solid #059669;
+  border-radius: 24px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 40px 20px 20px 20px;
+  box-shadow: inset 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.rana-nenufares-contenedor {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  position: relative;
+}
+
+.nenufar-caja {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  transition: transform 0.25s ease;
+}
+
+.nenufar-disco {
+  width: 68px;
+  height: 52px;
+  background: #047857;
+  border: 3px solid #064E3B;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.25rem;
+  box-shadow: 0 6px 14px rgba(4, 120, 87, 0.4);
+  transition: all 0.3s ease;
+}
+
+.nenufar-disco.activo {
+  transform: scale(1.15);
+  background: #059669;
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 18px rgba(251, 191, 36, 0.9);
+}
+
+.nenufar-disco.visitado {
+  background: #059669;
+  border-color: #34D399;
+}
+
+.nenufar-disco.resaltado-pista {
+  border-color: #F59E0B;
+  background: #D97706;
+  animation: popIn 0.3s ease;
+}
+
+.nenufar-paso-etiqueta {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #064E3B;
+  margin-top: 6px;
+}
+
+.rana-personaje {
+  font-size: 3rem;
+  position: absolute;
+  top: -50px;
+  z-index: 10;
+  filter: drop-shadow(0 6px 8px rgba(0, 0, 0, 0.25));
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  line-height: 1;
+}
+
+.rana-personaje.saltando {
+  animation: saltoParabolico 0.45s ease-out;
+}
+
+@keyframes saltoParabolico {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-40px) scale(1.25); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.rana-personaje.celebrando {
+  animation: celebracionRana 0.5s ease infinite alternate;
+}
+
+@keyframes celebracionRana {
+  0% { transform: translateY(0) rotate(-10deg) scale(1.1); }
+  100% { transform: translateY(-25px) rotate(10deg) scale(1.25); }
+}
+
+.rana-accion-saltar {
+  margin: 24px 0 10px 0;
+}
+
+.btn-salto-gigante {
+  min-width: 260px;
+  font-size: 1.35rem;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 8px 22px rgba(16, 185, 129, 0.4);
+}
+
+.btn-salto-gigante:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  transform: translateY(-3px);
+}
+
+.rana-contador-badge {
+  font-size: 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-left: 8px;
+}
+
+.rana-panel-pregunta {
+  background: #FFFFFF;
+  border: 3px solid var(--color-secundario);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 20px;
+  box-shadow: var(--sombra-tarjeta);
+  animation: popIn 0.35s ease;
+}
+
+.rana-pregunta-titulo {
+  font-size: 1.4rem;
+  color: var(--color-primario);
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.rana-opciones-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.btn-opcion-rana {
+  min-height: 64px;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border-radius: 18px;
+  background: #EFF6FF;
+  border: 3px solid #3B82F6;
+  color: var(--color-primario);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-opcion-rana:hover {
+  background: var(--color-primario);
+  color: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: var(--sombra-boton);
+}
+
+.rana-pista-visual {
+  background: #FEF3C7;
+  border: 2px solid #F59E0B;
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+.rana-pista-icono {
+  font-size: 1.8rem;
+}
+
+.rana-pista-contenido {
+  font-size: 1.1rem;
+  color: #92400E;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.rana-pantalla-fin {
+  background: var(--color-blanco);
+  border: 2px solid var(--color-borde);
+  border-radius: var(--radio-pequeno);
+  padding: 40px 24px;
+  box-shadow: var(--sombra-tarjeta);
+}
